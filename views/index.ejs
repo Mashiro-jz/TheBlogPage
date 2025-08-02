@@ -1,17 +1,37 @@
 <%- include("partials/header.ejs") %>
 
-<%# TO DO LIST:
-    1.Poprawić header // ZROBIONE
-    2.Określić szerokość całej strony, żeby elementy były ładnie // ZROBIONE
-    3.Stworzyć blok gdzie się wpisuje treść posta oraz nazwę użytkownika
-    4.Stworzyć przycisk clear, publish
-    5.Stworzyć tablicę danych, gdzie będą przechowywane: treść posta i nazwa użytkownika
-    6.Stworzyć blok, który pokazuje dany (wcześniej zrobiony) post
-    7.Dodać przyciski edit, delete
-    8.Sprawdzić / przeprowadzić testy działania i responsywność
-    9.Wpierdol to na GitHub
-%>
+    <%# TO DO LIST: 1.Poprawić header // ZROBIONE 2.Określić szerokość całej strony, żeby elementy były ładnie //
+        ZROBIONE 3.Stworzyć blok gdzie się wpisuje treść posta oraz nazwę użytkownika // ZROBIONE 4.Stworzyć przycisk
+        clear, publish // ZROBIONE 5.Stworzyć tablicę danych, gdzie będą przechowywane: treść posta i nazwa użytkownika
+        6.Stworzyć blok, który pokazuje dany (wcześniej zrobiony) post 7.Dodać przyciski edit, delete 8.Sprawdzić /
+        przeprowadzić testy działania i responsywność 9.Wpierdol to na GitHub %>
 
+        <div class="createPost">
+            <h2>Create a post</h2>
+            <form action="/submit" method="POST">
+                <input type="text" name="userName" id="userName" placeholder="Nickname here" required>
+                <textarea type="text" name="postContent" id="postContent" placeholder="Post content here"
+                    required></textarea>
+                <div class="buttons">
+                    <button type="reset">Clear</button>
+                    <button type="submit">Publish</button>
+                </div>
+            </form>
+        </div>
 
+        <hr class="divider text-secondary my-4">
+        
+        <div class = "createPost">
+            <h2>Posts</h2>
+            <% posts.reverse() %>
+            <% if(posts.length > 0) { %>
+                <% posts.forEach(post => { %>
+                    <h3 id = "userName"><%= post.user %> said:</h3>
+                    <p id = "postContent"><%= post.content %></p>
+                <% })} else { %>
+                    <p>No posts yet. Be the first to create one!</p>
+                <% } %>
+        </div>
 
+        
 <%- include("partials/footer.ejs") %>

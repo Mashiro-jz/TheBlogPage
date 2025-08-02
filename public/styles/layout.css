@@ -1,3 +1,82 @@
 body {
     background-color: #EBEBEB;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+.createPost {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #4D4D4D;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.063);
+    border-radius: 4px;
+}
+
+.createPost h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.createPost form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#postContent {
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #4D4D4D;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.063);
+    text-wrap: wrap;
+    border-radius: 4px;
+    overflow: auto;
+    resize: vertical;
+    word-break: normal;
+}
+input[type="text"], #postContent {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+}
+input[type="text"]:focus, #postContent:focus {
+    outline: none;
+    border-color: #0D6EFD;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+input[type="text"]::placeholder, #postContent::placeholder {
+    color: #999;
+    
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #0D6EFD;
+    color: white;
+}
+.buttons button:hover {
+    background-color: white;
+    color: #0D6EFD;
 }
