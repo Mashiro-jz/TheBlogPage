@@ -1,82 +1,102 @@
+:root {
+  --bg-color: #EBEBEB;
+  --text-color: #333;
+  --border-color: #4D4D4D;
+  --primary-color: #0D6EFD;
+  --placeholder-color: #999;
+  --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 body {
-    background-color: #EBEBEB;
-    font-family: 'Montserrat', sans-serif;
-    color: #333;
+  background-color: var(--bg-color);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-color);
 }
+
 .createPost {
-    width: 60%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-input[type="text"] {
-    padding: 10px;
-    border: 1px solid #4D4D4D;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.063);
-    border-radius: 4px;
-}
-
-.createPost h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    font-weight: 400;
-    text-align: center;
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
 }
 
 .createPost form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input[type="text"],
+#postContent,
+.createPost p {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: var(--shadow-md);
+  font-size: 1rem;
+  color: var(--text-color);
 }
 
 #postContent {
-    height: 150px;
-    padding: 10px;
-    border: 1px solid #4D4D4D;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.063);
-    text-wrap: wrap;
-    border-radius: 4px;
-    overflow: auto;
-    resize: vertical;
-    word-break: normal;
+  height: 150px;
+  resize: vertical;
+  overflow: auto;
 }
-input[type="text"], #postContent {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #333;
+
+.createPost p {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  border-radius: 4px;
+  min-height: 40px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
-input[type="text"]:focus, #postContent:focus {
-    outline: none;
-    border-color: #0D6EFD;
-    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+
+input[type="text"]:focus,
+#postContent:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
 }
-input[type="text"]::placeholder, #postContent::placeholder {
-    color: #999;
-    
+
+::placeholder {
+  color: var(--placeholder-color);
 }
 
 .buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    background-color: #0D6EFD;
-    color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.3s;
 }
+
 .buttons button:hover {
-    background-color: white;
-    color: #0D6EFD;
+  background-color: white;
+  color: var(--primary-color);
 }

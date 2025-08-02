@@ -27,6 +27,7 @@ app.post("/submit", (req, res) => {
     posts.push(post);
   }
 
+  posts.reverse(); // Reverse the posts array to show the latest post first
   res.redirect("/");
 
 });

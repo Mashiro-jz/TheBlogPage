@@ -23,11 +23,11 @@
         
         <div class = "createPost">
             <h2>Posts</h2>
-            <% posts.reverse() %>
             <% if(posts.length > 0) { %>
                 <% posts.forEach(post => { %>
                     <h3 id = "userName"><%= post.user %> said:</h3>
                     <p id = "postContent"><%= post.content %></p>
+                    <hr class="divider text-secondary my-4">
                 <% })} else { %>
                     <p>No posts yet. Be the first to create one!</p>
                 <% } %>
