@@ -25,13 +25,34 @@
             <h2>Posts</h2>
             <% if(posts.length > 0) { %>
                 <% posts.forEach(post => { %>
-                    <h3 id = "userName"><%= post.user %> said:</h3>
-                    <p id = "postContent"><%= post.content %></p>
-                    <hr class="divider text-secondary my-4">
+                    <div id="post-<%= post.id %>">
+                        <h3 class="userName"><%= post.user %> said:</h3>
+                        <p class="postContent"><%= post.content %></p>
+                        <div class="buttons">
+                            <button onclick="deletePost('<%= post.id %>')">Delete</button>
+                            <button onclick="edit()">Edit</button>
+                        </div>
+                        <hr class="divider text-secondary my-4">
+                    </div>
                 <% })} else { %>
                     <p>No posts yet. Be the first to create one!</p>
                 <% } %>
         </div>
+        <script>
+            // Make posts available to client-side JS
+            const posts = <%- JSON.stringify(posts) %>;
 
-        
+            function deletePost(id) {
+                // Implement delete functionality here
+                console.log("Delete post with id:", id);
+                posts.splice(posts.findIndex(post => post.id === id), 1);
+                document.getElementById(`post-${id}`).remove();
+                document.location.reload(); // Reload the page to reflect changes
+            }
+
+            function edit() {
+                // Implement edit functionality here
+                console.log("Edit post functionality not implemented yet.");
+            }
+        </script>
 <%- include("partials/footer.ejs") %>
