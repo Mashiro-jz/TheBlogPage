@@ -30,6 +30,18 @@ app.post("/submit", (req, res) => {
   res.redirect("/");
 });
 
+app.post("/delete", (req, res) => {
+  const postId = req.body.postId;
+  const postIndex = posts.findIndex((post) => post.id === postId);
+  if (postIndex !== -1) {
+    posts.splice(postIndex, 1);
+  }
+  res.redirect("/");
+});
+
+
+  
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
