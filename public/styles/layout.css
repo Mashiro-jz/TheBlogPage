@@ -42,8 +42,7 @@ h3{
 }
 
 input[type="text"],
-#postContent,
-.createPost p {
+#postContent {
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -52,8 +51,9 @@ input[type="text"],
   color: var(--text-color);
 }
 
+
 #postContent {
-  height: 150px;
+  min-height: 150px;
   resize: vertical;
   overflow: auto;
 }
@@ -65,7 +65,6 @@ input[type="text"],
   box-shadow: var(--shadow-md);
   border-radius: 4px;
   min-height: 40px;
-  white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: anywhere;
 }

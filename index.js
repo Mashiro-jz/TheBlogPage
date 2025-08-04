@@ -40,6 +40,17 @@ app.post("/delete", (req, res) => {
 });
 
 
+app.post("/edit", (req, res) => {
+  const postId = req.body.postId;
+  const postIndex = posts.findIndex((post) => post.id === postId);
+  if (postIndex !== -1) {
+    posts[postIndex].content = req.body.postContent; // Update the content of the post
+    posts[postIndex].user = req.body.userName;       // Update the user name of the post
+  }
+  res.redirect("/");
+});
+
+
   
 
 app.listen(port, () => {

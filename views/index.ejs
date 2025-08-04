@@ -1,46 +1,83 @@
 <%- include("partials/header.ejs") %>
 
-    <%# TO DO LIST: 1.Poprawić header // ZROBIONE 2.Określić szerokość całej strony, żeby elementy były ładnie //
-        ZROBIONE 3.Stworzyć blok gdzie się wpisuje treść posta oraz nazwę użytkownika // ZROBIONE 4.Stworzyć przycisk
-        clear, publish // ZROBIONE 5.Stworzyć tablicę danych, gdzie będą przechowywane: treść posta i nazwa użytkownika
-        6.Stworzyć blok, który pokazuje dany (wcześniej zrobiony) post 7.Dodać przyciski edit, delete 8.Sprawdzić /
-        przeprowadzić testy działania i responsywność 9.Wpierdol to na GitHub %>
+<%# TO DO LIST:
+    1. Poprawić header // ZROBIONE
+    2. Określić szerokość całej strony, żeby elementy były ładnie // ZROBIONE
+    3. Stworzyć blok gdzie się wpisuje treść posta oraz nazwę użytkownika // ZROBIONE
+    4. Stworzyć przycisk clear, publish // ZROBIONE
+    5. Stworzyć tablicę danych, gdzie będą przechowywane: treść posta i nazwa użytkownika // ZROBIONE
+    6. Stworzyć blok, który pokazuje dany (wcześniej zrobiony) post // ZROBIONE
+    7. Dodać przyciski edit, delete // ZROBIONE
+    8. Sprawdzić / przeprowadzić testy działania i responsywność // ZROBIONE
+    9. Wpierdol to na GitHub // ZROBIONE
+%>
 
-        <div class="createPost">
-            <h2>Create a post</h2>
-            <form action="/submit" method="POST">
-                <input type="text" name="userName" id="userName" placeholder="Nickname here" required>
-                <textarea type="text" name="postContent" id="postContent" placeholder="Post content here" required></textarea>
-                <div class="buttons">
-                    <button type="reset">Clear</button>
-                    <button type="submit">Publish</button>
-                </div>
-            </form>
+<div class="createPost">
+    <h2>Create a post</h2>
+    <form action="/submit" method="POST">
+        <input type="text" name="userName" id="userName" placeholder="Nickname here" required>
+        <textarea type="text" name="postContent" id="postContent" placeholder="Post content here" required></textarea>
+        <div class="buttons">
+            <button type="reset" class="btn btn-primary">Clear</button>
+            <button type="submit" class="btn btn-primary">Publish</button>
         </div>
+    </form>
+</div>
 
-        <hr class="divider text-secondary my-4">
-        
-        <div class = "createPost">
-            <h2>Posts</h2>
-            <% if(posts.length > 0) { %>
-                <% posts.forEach(post => { %>
-                    <div id="post-<%= post.id %>">
-                        <h3 class="userName"><%= post.user %> said:</h3>
-                        <p class="postContent"><%= post.content %></p>
-                        <div class="buttons">
-                            <form action="/delete" method="POST">
-                                <input type="hidden" name="postId" value="<%= post.id %>">
-                                <button type="submit">Delete</button>
-                            </form>
+<hr class="divider text-secondary my-4">
+
+<div class="createPost">
+    <h2>Posts</h2>
+    <% if (posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+            <div id="post-<%= post.id %>">
+                <h3 class="userName">
+                    <%= post.user %> said:
+                </h3>
+                <p class="postContent">
+                    <%= post.content %>
+                </p>
+                <div class="buttons">
+                    <form action="/delete" method="POST">
+                        <input type="hidden" name="postId" value="<%= post.id %>">
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </form>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal-<%= post.id %>">
+                        Edit
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="editModal-<%= post.id %>" tabindex="-1" aria-labelledby="editModalLabel-<%= post.id %>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
                             <form action="/edit" method="POST">
-                                <input type="hidden" name="postId" value="<%= post.id %>">
-                                <button type="submit">Edit</button>
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="editModalLabel-<%= post.id %>">Editing Post</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="postId" value="<%= post.id %>">
+                                    <label for="userName-<%= post.id %>" class="form-label">User Name</label>
+                                    <input type="text" class="form-control" id="userName-<%= post.id %>" name="userName" value="<%= post.user %>" required>
+                                    <label for="postContent-<%= post.id %>" class="form-label">Post Content</label>
+                                    <textarea class="form-control" id="postContent-<%= post.id %>" name="postContent" rows="3" required><%= post.content %></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
                             </form>
                         </div>
-                        <hr class="divider text-secondary my-4">
                     </div>
-                <% })} else { %>
-                    <p>No posts yet. Be the first to create one!</p>
-                <% } %>
-        </div>
+                </div>
+
+                <hr class="divider text-secondary my-4">
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>No posts yet. Be the first to create one!</p>
+    <% } %>
+</div>
+
 <%- include("partials/footer.ejs") %>
