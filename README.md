@@ -12,7 +12,7 @@ Built using server-side rendering with EJS.
 
 ## 📸 Preview
 
-![App Screenshot](preview.png) <!-- Dodaj zrzut ekranu aplikacji do katalogu projektu -->
+![App Screenshot](preview.png preview2.png) <!-- Dodaj zrzut ekranu aplikacji do katalogu projektu -->
 
 ---
 
@@ -96,8 +96,8 @@ Data will reset on server restart. To persist data, consider integrating a datab
 
 👤 Author
 Aleksander Wiącek
-📧 Your email here
-🔗 Your GitHub
+📧 a.wiacek@zlotoryja.xyz
+🔗 [Your GitHub](https://github.com/Mashiro-jz)
 
 📝 License
 This project is open source and available under the MIT License.
